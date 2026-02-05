@@ -5,6 +5,7 @@ from database import db
 from dotenv import load_dotenv
 from flask_migrate import Migrate
 from model import Word
+import random
 
 load_dotenv()
 
@@ -20,8 +21,9 @@ def index():
 
 @app.route('/new_game')
 def new_game_page():
-    words = db.session.query(Word).all()
-    return render_template('new_game.html')
+    words = db.session.query(Word).filter_by(is_available=1).all() # hämtar alla tillgängliga ord
+    word = random.choice(words) # ansätter randomly ett av dessa till "word(of the day)"
+    return render_template('new_game.html', word=word) # skickar med word till new_game
 
 
 if __name__ == "__main__":
