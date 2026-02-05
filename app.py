@@ -13,10 +13,14 @@ db.init_app(app)
 migrate= Migrate(app, db)
 
 # render to main page
-
 @app.route('/')
 def index():
     return render_template('index.html')
+
+@app.route('/new_game')
+def new_game_page():
+    return render_template('new_game.html')
+
 
 if __name__ == "__main__":
     app.run(debug=True)
