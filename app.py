@@ -4,6 +4,7 @@ from seed import seedData
 from database import db
 from dotenv import load_dotenv
 from flask_migrate import Migrate
+from model import Word
 
 load_dotenv()
 
@@ -19,6 +20,7 @@ def index():
 
 @app.route('/new_game')
 def new_game_page():
+    words = db.session.query(Word).all()
     return render_template('new_game.html')
 
 
