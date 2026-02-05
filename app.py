@@ -22,7 +22,13 @@ def index():
 @app.route('/new_game')
 def new_game_page():
     words = db.session.query(Word).filter_by(is_available=1).all() # hämtar alla tillgängliga ord
+
+    if not words: # safeguard ifall det är slut på ord
+        return render_template('new_game.html', word=None) # none hanteras i new_game.html
+    
     word = random.choice(words) # ansätter randomly ett av dessa till "word(of the day)"
+    word.is_available=False
+    db.session.commit()
     return render_template('new_game.html', word=word) # skickar med word till new_game
 
 
