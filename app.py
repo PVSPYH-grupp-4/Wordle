@@ -19,6 +19,14 @@ migrate= Migrate(app, db)
 def index():
     return render_template('index.html')
 
+@app.route('/')
+def about_page():
+    return render_template('about.html')
+
+@app.route('/')
+def rules_page():
+    return render_template('rules.html')
+
 @app.route('/new_game')
 def new_game_page():
     words = db.session.query(Word).filter_by(is_available=1).all() # hämtar alla tillgängliga ord
@@ -32,7 +40,7 @@ def new_game_page():
     return render_template('new_game.html', word=word) # skickar med word till new_game
 
 
-if __name__ == "__main__":
+if __name__ == "__main__":    
     app.run(debug=True)
     with app.app_context():
         seedData()
