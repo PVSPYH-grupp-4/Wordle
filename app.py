@@ -41,6 +41,6 @@ def new_game_page():
 
 
 if __name__ == "__main__":    
-    app.run(debug=True)
     with app.app_context():
-        seedData()
+        seedData() 
+    app.run(debug=True)
