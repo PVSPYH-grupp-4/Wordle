@@ -1,24 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<<<<<<< HEAD
-  <meta charset="UTF-8">
-  <title>Wordle</title>
-
-  <!-- CSS (shared by all pages) -->
-  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-</head>
-<body>
-
-  <header>
-    <h1>Wordle</h1>
-  </header>
-
-  <main>
-    {% block content %}{% endblock %}
-  </main>
-
-=======
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}Wordle{% endblock title %}</title>
@@ -27,11 +9,6 @@
     {% include "components/_navbar.html" %}
     {% block content %}
     {% endblock %}
-<<<<<<< HEAD
-    {% include "_footer.html" %}
->>>>>>> d8b8e1ac2568884812a1e0fc7b8269ca59bcd31d
-=======
     {% include "components/_footer.html" %}
->>>>>>> 3f555bb8b60fc46a7f9539ac120a93386b6ae938
 </body>
 </html>
