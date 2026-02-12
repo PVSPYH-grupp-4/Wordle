@@ -3,6 +3,47 @@
 
 {% block content %}
 
-<p>hello</p>
+<div>
+  {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+      {% for category, msg in messages %}
+        <div class="flash" role="alert">
+          {{ msg }}
+        </div>
+      {% endfor %}
+    {% endif %}
+  {% endwith %}
+
+
+
+  <div>
+   <form action="{{url_for ('app.guess')}}" method="post">             <!--kanske behöver ändras beroende på vad route funktionen heter -->
+    {{ form.hidden_tag() }}
+
+    <div>
+      <label >Make your guess: </label>
+      {{ form.guess }}
+    </div>
+    
+    
+    {% if form.guess.errors %}
+    
+    <div >
+        {% for error in form.guess.errors %}
+        <p>{{ error }}</p>
+        {% endfor %}
+    </div>
+    {% endif %}
+    
+    {{ form.submit }}
+    
+    <div>
+      <span>Result: </span>
+      {{result}}
+    </div>
+
+
+</form>
+</div>
 
 {% endblock %}
