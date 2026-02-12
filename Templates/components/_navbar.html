@@ -1,11 +1,10 @@
 <header>
     <div class="container">
         <nav class="text-primary">
-            <a href="{{url_for('index')}}"><img src="{{url_for('static', filename='assets/images/logo.png')}}" alt="logo"></a>
+            <a href="{{url_for('home')}}"><img src="{{url_for('static', filename='assets/images/logo.png')}}" alt="logo"></a>
             <ul>
-                <li><a href="{{url_for('index')}}">Home</a></li>
-                <!-- fixa route för about us -->
-                <li><a href="{{url_for('about_page')}}">About Us</a></li>
+                <li><a href="{{ url_for('home') }}">Home</a></li>
+                <li><a href="{{ url_for('about') }}">About us</a></li>
                 <!-- fixa route för rules -->
                 <li><a href="{{url_for('rules_page')}}">Rules</a></li>
                 <li><a class="btn btn-primary" href="{{url_for('new_game_page')}}">New game</a></li>
@@ -13,3 +12,28 @@
         </nav>
     </div>
 </header>
+
+
+
+<nav class="navbar">
+
+  <!-- Vänster -->
+  <ul class="nav-left">
+    <li><a href="{{ url_for('index') }}">Home</a></li>
+    <li><a href="{{ url_for('about_page') }}">About Us</a></li>
+  </ul>
+
+  <!-- Logo i mitten -->
+  <a href="{{ url_for('index') }}" class="nav-center">
+    <img src="{{ url_for('static', filename='assets/images/logo.png') }}"
+         alt="logo"
+         class="nav-logo">
+  </a>
+
+  <!-- Höger -->
+  <ul class="nav-right">
+    <li><a href="{{ url_for('rules_page') }}">Rules</a></li>
+    <li><a class="btn btn-primary" href="{{ url_for('new_game_page')">New Game</a></li>
+  </ul>
+
+</nav>

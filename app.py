@@ -2,7 +2,7 @@ import os
 from flask import Flask, render_template, session
 from seed import seedData
 from database import db
-from dotenv import load_dotenv
+from dotenv import load_dotenv 
 from flask_migrate import Migrate
 from model import Word
 import random
@@ -69,8 +69,9 @@ def new_game_page():
 #     # sedan måste vi skapa routes från formulären från new_game som "poppar" sessionen när spelet är slut
 #     # eller uppdaterar antalet gissningar vid gissningar
 
-
-if __name__ == "__main__":    
+if __name__ == "__main__":
     with app.app_context():
-        seedData() 
+        db.create_all()
+        seedData()
     app.run(debug=True)
+

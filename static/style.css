@@ -1,4 +1,4 @@
-
+/* 
 
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
@@ -10,7 +10,6 @@ h1, h2, h3, h4, h5, h6,
 p, li, span {
     color: var(--text-color-dark);
 }
-
 
 
 html, body, div, span, applet, object, iframe,
@@ -111,4 +110,46 @@ button, input {
   --color-bg-primary: #1F2937;
   --color-bg-section: #E5E7EB;
   --color-bg-alt: #ffffff;
+} */
+
+
+
+/* navbar */
+.navbar{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:12px 24px;
+  border-bottom:1px solid #ddd;
+  position: relative; /* viktigt för mitten */
+}
+
+.nav-left, .nav-right{
+  display:flex;
+  gap:20px;
+  list-style:none;
+  align-items:center;
+  margin:0;
+  padding:0;
+}
+
+.nav-center{
+  position:absolute;
+  left:50%;
+  transform:translateX(-50%);
+}
+
+.nav-logo{
+  height:18px;
+  width:auto;
+  display:block;
+}
+
+main img{
+  max-width: 250px;
+}
+
+
+.game-board{
+  width: 280px !important;
 }
