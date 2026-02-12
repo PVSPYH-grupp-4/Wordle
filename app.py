@@ -4,12 +4,8 @@ from seed import seedData
 from database import db
 from dotenv import load_dotenv
 from flask_migrate import Migrate
-<<<<<<< HEAD
-from forms import GuessForm
-=======
 from model import Word
 import random
->>>>>>> d8b8e1ac2568884812a1e0fc7b8269ca59bcd31d
 
 load_dotenv()
 
@@ -23,22 +19,6 @@ migrate= Migrate(app, db)
 def index():
     return render_template('index.html')
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-
-#guess
-
-@app.route("/", methods=["GET", "POST"])
-def index():
-    form = GuessForm()
-
-    if form.validate_on_submit():
-        guess = form.guess.data.lower()
-        print("User guess:", guess)  # later: compare with the secret word
-
-    return render_template("index.html", form=form)
-=======
-=======
 @app.route('/')
 def about_page():
     return render_template('about.html')
@@ -47,7 +27,6 @@ def about_page():
 def rules_page():
     return render_template('rules.html')
 
->>>>>>> 3f555bb8b60fc46a7f9539ac120a93386b6ae938
 @app.route('/new_game')
 def new_game_page():
     words = db.session.query(Word).filter_by(is_available=1).all() # hämtar alla tillgängliga ord
@@ -64,11 +43,6 @@ def new_game_page():
 # @app.route('/new_game')
 # def new_game_page():
 
-<<<<<<< HEAD
->>>>>>> d8b8e1ac2568884812a1e0fc7b8269ca59bcd31d
-if __name__ == "__main__":
-    app.run(debug=True)
-=======
 #     # vi kollar först om ett spel redan pågår
 #     if "word_id" in session: # word_id är en "nyckel" i session som korresponderar mot den INT som är PK i Words-tabellen
 #         word = Word.query.get(session["word_id"]) # och kan därför hämta ordet från databasen
@@ -97,7 +71,6 @@ if __name__ == "__main__":
 
 
 if __name__ == "__main__":    
->>>>>>> 3f555bb8b60fc46a7f9539ac120a93386b6ae938
     with app.app_context():
         seedData() 
     app.run(debug=True)
