@@ -110,46 +110,26 @@ button, input {
   --color-bg-primary: #1F2937;
   --color-bg-section: #E5E7EB;
   --color-bg-alt: #ffffff;
-} */
+} 
 
-
-
-/* navbar */
-.navbar{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  padding:12px 24px;
-  border-bottom:1px solid #ddd;
-  position: relative; /* viktigt för mitten */
-}
-
-.nav-left, .nav-right{
-  display:flex;
-  gap:20px;
-  list-style:none;
-  align-items:center;
-  margin:0;
-  padding:0;
-}
-
-.nav-center{
-  position:absolute;
-  left:50%;
-  transform:translateX(-50%);
-}
 
 .nav-logo{
-  height:18px;
-  width:auto;
+  width: 14px;
+}
+
+
+
+.landing{
+  min-height: calc(100vh - 70px);
+  display: grid;
+  place-items: center;
+  background: #e9e7e1;
+  padding: 32px 16px;
+}
+
+.landing-logo{
+  width: 56px;
+  height: 56px;
   display:block;
-}
-
-main img{
-  max-width: 250px;
-}
-
-
-.game-board{
-  width: 280px !important;
+  margin: 0 auto 14px;
 }
