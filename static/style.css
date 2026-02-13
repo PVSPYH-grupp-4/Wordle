@@ -133,3 +133,140 @@ button, input {
   display:block;
   margin: 0 auto 14px;
 }
+
+
+
+
+
+
+head{
+  background: #fff;
+  border-bottom: 1px solid var(--border);
+}
+
+
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* logo vänster, länkar höger */
+  padding: 1rem 0;
+}
+
+
+.nav-logo {
+  width: 48px;
+  height: auto;
+  display: block;
+}
+
+
+nav ul{
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  margin: 0;
+  padding: 0;
+}
+
+
+nav a{
+  text-decoration: none;
+  color: var(--text);
+  font-weight: 600;}
+
+  nav a:hover{
+  text-decoration: underline;
+}
+
+
+
+.btn{
+display: inline-block;
+padding: 0.8rem 1.3rem;
+border-radius: 999px;
+text-decoration: none;
+font-weight: 700;
+transition: all 0.2s ease;
+
+}
+
+
+.btn-primary{
+  background: var(--primary);
+  color: #fff;
+}
+
+
+.btn-primary:hover{
+  background: var(--primary-hover);
+  transform: translate(-2px);
+
+box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+text-decoration: none;
+}
+
+
+
+.hero{
+  flex: 1;
+  background: var(--surface);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 2rem 1rem;
+  width: 100%;
+}
+
+
+.hero .container{
+  max-width: 600px;
+}
+
+
+
+.hero img {
+  width: 80px;
+  height: auto;
+  display: block;
+  margin: 0 auto 1.5rem;
+}
+
+.hero h1{
+  font-size: 3.2rem;
+  margin: 0 0 0.5rem;
+  letter-spacing: -0.02em;
+}
+
+.hero h2{
+  font-size: 1.5rem;
+  margin: 0 0 1rem;
+  color: var(--muted);
+  font-weight: 700;
+}
+
+
+.hero p{
+  margin: 0 0 1.8rem;
+  color: var(--muted);
+  font-size: 1.05rem;
+}
+
+
+footer{
+  border-top: 1px solid var(--border);
+  padding: 1.25rem 0;
+  text-align: center;
+  background: #fff;
+}
+
+
+footer p{
+  margin: 0.35rem 0;
+}
+
+
+footer small {
+  color: var(--muted);
+}
