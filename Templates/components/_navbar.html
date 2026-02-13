@@ -1,12 +1,10 @@
 <header>
     <div class="container">
         <nav class="text-primary">
-            <a href="{{url_for('index')}}"><img src="{{ url_for('static', filename='assets/images/wordle-logo.svg') }}"alt="wordle"class="nav-logo></a>
-            <ul>
-                
+            <a href="{{url_for('index')}}"><img src="{{ url_for('static', filename='assets/images/logo.png') }}" alt="wordle" class="nav-logo"></a>
+            <ul>                
                 <li><a href="{{ url_for('index') }}">Home</a></li>
                 <li><a href="{{ url_for('about_page') }}">About us</a></li>
-                <!-- fixa route för rules -->
                 <li><a href="{{url_for('rules_page')}}">Rules</a></li>
                 <li><a class="btn btn-primary" href="{{url_for('new_game_page')}}">New game</a></li>
             </ul>
@@ -14,7 +12,3 @@
         </nav>
     </div>
 </header>
-
-
-
-

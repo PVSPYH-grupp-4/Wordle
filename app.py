@@ -22,11 +22,11 @@ migrate= Migrate(app, db)
 def index():
     return render_template('index.html')
 
-@app.route('/')
+@app.route('/about')
 def about_page():
     return render_template('about.html')
 
-@app.route('/')
+@app.route('/rules')
 def rules_page():
     return render_template('rules.html')
 
