@@ -1,0 +1,14 @@
+{% extends "layout.html" %}
+
+{% block title %}Rules{% endblock %}
+
+{% block content %}
+<section class="container text-primary">
+    <h1>How To Play</h1>
+    <h2>Guess the Wordle in 6 tries.</h2>
+    <p>Each guess must be a valid 5-letter word.
+    The color of the tiles will change to show how close your guess was to the word.
+    </p>
+    <img src="{{ url_for('static', filename='assets/images/Examples.png') }}" alt="How to play example">
+</section>
+{% endblock %}
