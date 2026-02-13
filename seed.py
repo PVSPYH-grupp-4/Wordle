@@ -12,7 +12,7 @@ def seedData():
     "BENCH","BILLY","BIRTH","BLACK","BLAME","BLIND","BLOCK","BLOOD","BOARD","BOOST",
     "BOOTH","BOUND","BRAIN","BRAND","BREAD","BREAK","BRICK","BRIEF","BRING","BROAD",
     "BROWN","BUILD","BUILT","BUYER","CABLE","CALIF","CARRY","CATCH","CAUSE","CHAIN",
-    "CHAIR","CHART","CHASE","CHEAP","CHECK","CHEST","CHIEF","CHILD","CHOIR","CHOOSE",
+    "CHAIR","CHART","CHASE","CHEAP","CHECK","CHEST","CHIEF","CHILD","CHOIR",
     "CIVIL","CLAIM","CLASS","CLEAN","CLEAR","CLICK","CLOCK","CLOSE","COACH","COAST",
     "COULD","COUNT","COURT","COVER","CRACK","CRAFT","CRASH","CRIME","CROSS","CROWD",
     "CROWN","CURVE","CYCLE","DAILY","DANCE","DATED","DEALT","DEATH","DEBUT","DELAY",
@@ -60,9 +60,9 @@ def seedData():
     
     for w in WORDS:
 
-        # exists = db.session.query(Word.id).filter_by(word=w).first()
-        # if exists:
-        #     continue
+        exists = db.session.query(Word.id).filter_by(word=w).first()
+        if exists:
+            continue
 
         ord = Word()
         ord.word=w
