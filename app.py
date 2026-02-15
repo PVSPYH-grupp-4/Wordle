@@ -73,12 +73,17 @@ def new_game_page():
     # spara valt ord i session, men flask sessions kan bara spara enkla datatyper (int, str)
     session["word_id"] = word.id # sessionen för ordet får bli PK för det valda ordet
     session["attempts"] = 0 # sätt antalet gissningar till 0
+    session["history"] = [] # kommer att innehålla dictionaries för gissningshistorik, annars kan vi bara skriva 1 rad åt gången i jinja 
 
-    return render_template('new_game.html', word=word, form=form)
+    return render_template('new_game.html',
+                            word=word,
+                            form=form,
+                            history=session["history"]) # behövs eg inte men blir renare kod
 
     # sedan måste vi skapa routes från formulären från new_game som "poppar" sessionen när spelet är slut
     # eller uppdaterar antalet gissningar vid gissningar
 
+# kallas från new_game när användaren skickar ett ord med formulär
 @app.route('/guess', methods=['POST'])
 def guess():
     
@@ -113,8 +118,48 @@ def guess():
         session.pop("attempts", None)
         return render_template("new_game.html", word=word, result="lose", form=GuessForm())
 
-    # annars fortsätter spelet
-    return render_template("new_game.html", word=word, result="continue", form=GuessForm())
+    # annars, kalla på funktion som kollar vad i gissningen som är rätt och fel
+    result_list = check_guess(user_guess, word.word) #user_guess som sträng, word.word som sträng från objekt
+
+    # vi måste också spara gissning och resultat i history för att kunna skriva ut alla rader
+    session["history"].append({"guess": user_guess, "result": result_list }) #user_guess: str, result_list: list
+
+    # sedan fortsätter spelet
+    return render_template("new_game.html",
+                            word=word, result="continue",
+                            form=GuessForm(),
+                            result_list=result_list,
+                            history=session["history"]) # behövs eg inte här heller men blir renare
+
+# funktion som jämför ordet som användaren skickade med det hemliga ordet
+# och skickar tillbaka en lista som innehåller "correct", "partial" eller "wrong" för varje bokstav i index
+def check_guess(guess, word):
+    result_list = [] # lista som vi fyller och skickar tillbaka
+    word_list = list(word.upper()) # lista med stora bokstäver från hemliga ordet
+    guess_list = list(guess.upper()) # lista med stora bokstäver från gissade ordet
+
+    # först kolla om varje bokstav är på rätt plats och lägger i listan samt tar bort från övr listor
+    for i in range(len(guess)): #iterera över index
+        if guess_list[i] == word_list[i]:
+            result_list.append("correct")
+            guess_list[i] = None
+            word_list[i] = None
+        # annars sätter vi en placeholder som "None" tills vi kollat partial
+        else:
+            result_list.append(None)
+
+    # kolla efter "partial" på de index som är None
+    for i in range(len(guess)):
+        if result_list[i] is None:
+            if guess_list[i] in word_list:
+                result_list[i] = "partial"
+                # hitta första indexet i word där gissad bokstav förekommer
+                word_list[word_list.index(guess_list[i])] = None # markerar bokstaven som förbrukad
+            else:
+                result_list[i] = "wrong"
+    
+    return result_list
+
 
 
 # # route från new_game som hanterar vad som händer vid gissningar (dvs när man skickar formulär)
