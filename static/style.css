@@ -170,3 +170,26 @@ footer p{
 footer small{
   color: var(--muted);
 }
+
+
+.guess-grid {
+  border-collapse: separate;
+  border-spacing: 0.5rem;
+  margin: 1rem auto;
+}
+
+.tile {
+  width: 3rem;
+  height: 3rem;
+  text-align: center;
+  vertical-align: middle;
+  font-weight: 700;
+  text-transform: uppercase;
+  border-radius: 0.6rem;
+  border: 2px solid rgba(0,0,0,0.15);
+}
+
+.tile--correct { background: #16a34a; color: #fff; }
+.tile--partial { background: #f59e0b; color: #111; }
+.tile--wrong   { background: #6b7280; color: #fff; }
+.tile--empty   { background: transparent; }
