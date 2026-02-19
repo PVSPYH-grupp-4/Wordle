@@ -17,7 +17,7 @@
 
 
   <div>
-   <form action="{{url_for ('app.guess')}}" method="post">             <!--kanske behöver ändras beroende på vad route funktionen heter -->
+   <form action="{{url_for ('guess')}}" method="post">             <!--kanske behöver ändras beroende på vad route funktionen heter -->
     {{ form.hidden_tag() }}
 
     <div>
@@ -36,14 +36,37 @@
     {% endif %}
     
     {{ form.submit }}
-    
-    <div>
-      <span>Result: </span>
-      {{result}}
-    </div>
+
 
 
 </form>
+
+<table class="guess-grid">
+  <tbody>
+    {% for row in history %} <!--blir en lista med dict {"guess":user_guess, "result": result_list} -->
+      <tr>
+        {% for i in range(row.guess|length) %} <!-- länden på gissningen -->
+          <td class="tile tile--{{ row.result[i] }}">{{ row.guess[i] }}</td> <!-- skriver ut ett ord i taget, använder en klass beroende på svaret t.ex tile tile-- "correct" -->
+        {% endfor %}
+      </tr>
+    {% endfor %}
+
+    {% set remaining = 6 - (history|length) %} <!-- sätter en variabel "remaining" som är 6 - längden på försök man har gjort -->
+    {% for _ in range(remaining) %} <!-- loppar medans det finns försök kvar -->
+      <tr>
+        {% for _ in range(word.word|length) %} <!-- loopar längden på det korrekta ordet -->
+          <td class="tile tile--empty"></td> <!-- en tom cell för varje bokstav-->
+        {% endfor %}
+      </tr>
+    {% endfor %}
+
+  </tbody>
+
+
+</table>
+
+
+
 </div>
 
 {% endblock %}
