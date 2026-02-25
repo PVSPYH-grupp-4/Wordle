@@ -14,41 +14,11 @@
     {% endif %}
   {% endwith %}
 
-  {% if result == "win" %}
-    <div>
-      Congratulations! The correct word was <strong>{{ word.word }}</strong>
-    </div>
-  {% elif result == "lose" %}
-    <div>
-      Too bad! The correct word was: <strong>{{ word.word }}</strong>
-    </div>
-  {% endif %}
+
 
 
   <div>
-   <form action="{{url_for ('guess')}}" method="post">             <!--kanske behöver ändras beroende på vad route funktionen heter -->
-    {{ form.hidden_tag() }}
-
-    <div>
-      <label >Make your guess: </label>
-      {{ form.guess }}
-    </div>
-    
-    
-    {% if form.guess.errors %}
-    
-    <div >
-        {% for error in form.guess.errors %}
-        <p>{{ error }}</p>
-        {% endfor %}
-    </div>
-    {% endif %}
-    
-    {{ form.submit }}
-
-
-
-</form>
+   
 
 <table class="guess-grid">
   <tbody>
@@ -74,7 +44,40 @@
 
 </table>
 
+  <div class="announcement-text">
+      {% if result == "win" %}
+      <div class="announcement-text win">
+        Congratulations! The correct word was <strong>{{ word.word }}</strong>
+      </div>
+    {% elif result == "lose" %}
+      <div class="announcement-text lose">
+        Too bad! The correct word was: <strong>{{ word.word }}</strong>
+      </div>
+    {% endif %}
+  </div>
 
+  <div class="guess-form-wrapper">
+    <form action="{{url_for ('guess')}}" method="post">             <!--kanske behöver ändras beroende på vad route funktionen heter -->
+        {{ form.hidden_tag() }}
+
+        <div>
+          <label >Make your guess: </label>
+          {{ form.guess }}
+        </div>
+        
+        
+        {% if form.guess.errors %}
+        
+        <div >
+            {% for error in form.guess.errors %}
+            <p>{{ error }}</p>
+            {% endfor %}
+        </div>
+        {% endif %}
+        
+        {{ form.submit }}
+    </form>
+  </div>
 
 </div>
 
